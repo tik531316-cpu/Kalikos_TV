@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalikos_Tv - Official Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --card-bg: rgba(18, 20, 29, 0.75);
+            --border-color: rgba(255, 107, 0, 0.2);
+            --primary-orange: #ff6b00;
+            --primary-gold: #ffaa00;
+            --text-main: #ffffff;
+            --text-muted: #a0a5b5;
+            --yt-red: #ff0000;
+            --tt-cyan: #25f4ee;
+            --tt-pink: #fe2c55;
+            --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --ff-orange: #ff5500;
+            --wa-green: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 107, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 170, 0, 0.06) 0%, transparent 40%);
+        }
+
+        .en-num {
+            font-family: 'Orbitron', 'Cairo', sans-serif !important;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            padding: 20px 16px 80px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        /* Banner & Profile Section */
+        .header-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            position: relative;
+        }
+
+        .banner-container {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #1f1209 0%, #3a1c06 50%, #120a03 100%);
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 11, 16, 0.2), var(--bg-dark));
+        }
+
+        .profile-info {
+            padding: 0 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -60px;
+            position: relative;
+            text-align: center;
+        }
+
+        .avatar-box {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-gold));
+            box-shadow: 0 0 25px rgba(255, 107, 0, 0.5);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #1a1c23;
+        }
+
+        .channel-name {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #fff 30%, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .channel-bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        /* Total Counter Card */
+        .total-card {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.12) 0%, rgba(20, 22, 32, 0.8) 100%);
+            border: 2px solid var(--primary-orange);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+            position: relative;
+        }
+
+        .total-title {
+            font-size: 1.05rem;
+            color: #ffaa55;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .total-count {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+            margin: 8px 0;
+            line-height: 1;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 0, 0.2);
+            color: var(--primary-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 170, 0, 0.3);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-orange);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
+
+        /* Section Header */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cards Grid / List */
+        .cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .yt-icon { background: rgba(255, 0, 0, 0.15); color: #ff3333; border: 1px solid rgba(255, 0, 0, 0.3); }
+        .tt-icon { background: rgba(37, 244, 238, 0.15); color: #25f4ee; border: 1px solid rgba(37, 244, 238, 0.3); }
+        .ig-icon { background: rgba(220, 39, 67, 0.15); color: #dc2743; border: 1px solid rgba(220, 39, 67, 0.3); }
+        .ff-icon { background: rgba(255, 85, 0, 0.15); color: #ff5500; border: 1px solid rgba(255, 85, 0, 0.3); }
+        .wa-icon { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid rgba(37, 211, 102, 0.3); }
+
+        .card-details h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .card-details p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .card-right {
+            text-align: left;
+        }
+
+        .count-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .count-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Free Fire Special Box */
+        .ff-box {
+            background: linear-gradient(135deg, rgba(255, 85, 0, 0.1) 0%, rgba(20, 22, 32, 0.8) 100%);
+            border: 1px solid rgba(255, 85, 0, 0.3);
+            border-radius: 18px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-copy {
+            background: rgba(255, 85, 0, 0.2);
+            border: 1px solid var(--ff-orange);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.95);
+            background: var(--ff-orange);
+        }
+
+        /* Secret Admin Trigger & Modal */
+        .footer-lock {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .lock-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .lock-btn:hover {
+            color: var(--primary-orange);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #141622;
+            border: 1px solid var(--primary-orange);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0a0b10;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-orange);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-gold));
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-orange);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header / Profile Section -->
+        <div class="header-card">
+            <div class="banner-container" id="bannerBg">
+                <div class="banner-overlay"></div>
+            </div>
+            <div class="profile-info">
+                <div class="avatar-box">
+                    <img src="" alt="Kalikos_Tv" class="avatar-img" id="avatarImg">
+                </div>
+                <h1 class="channel-name" id="dispChannelName">Kalikos_Tv</h1>
+                <p class="channel-bio" id="dispBio">مرحباً بكم في القناة الرسمية | صانع محتوى Free Fire</p>
+            </div>
+        </div>
+
+        <!-- Total Followers Counter -->
+        <div class="total-card">
+            <div class="total-title">
+                <i class="fa-solid fa-users"></i> إجمالي المتابعين
+            </div>
+            <div class="total-count en-num" id="totalFollowers">0</div>
+            <div class="badge-live">
+                <span class="live-dot"></span> مباشر ومحدث تلقائياً
+            </div>
+        </div>
+
+        <!-- Social Links Section -->
+        <div class="section-title">
+            <i class="fa-solid fa-share-nodes"></i> منصات التواصل الاجتماعي
+        </div>
+
+        <div class="cards-list">
+            <!-- YouTube Card -->
+            <a href="#" target="_blank" id="ytLink" class="social-card">
+                <div class="card-left">
+                    <div class="icon-box yt-icon">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>YouTube</h3>
+                        <p id="dispYtHandle">@Kalikos_Tv</p>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <span class="count-value en-num" id="ytCount">0</span>
+                    <span class="count-label">مشترك</span>
+                </div>
+            </a>
+
+            <!-- TikTok Card -->
+            <a href="#" target="_blank" id="ttLink" class="social-card">
+                <div class="card-left">
+                    <div class="icon-box tt-icon">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>TikTok</h3>
+                        <p id="dispTtHandle">@kalikos_tv</p>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <span class="count-value en-num" id="ttCount">0</span>
+                    <span class="count-label">متابع</span>
+                </div>
+            </a>
+
+            <!-- Instagram Card -->
+            <a href="#" target="_blank" id="igLink" class="social-card">
+                <div class="card-left">
+                    <div class="icon-box ig-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>Instagram</h3>
+                        <p id="dispIgHandle">@kalikos_tv</p>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <span class="count-value en-num" id="igCount">0</span>
+                    <span class="count-label">متابع</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gaming & Contact Section -->
+        <div class="section-title">
+            <i class="fa-solid fa-gamepad"></i> الألعاب والتواصل
+        </div>
+
+        <div class="cards-list">
+            <!-- Free Fire ID Card -->
+            <div class="ff-box">
+                <div class="card-left">
+                    <div class="icon-box ff-icon">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>Free Fire ID</h3>
+                        <p class="en-num" style="font-weight: 700; color: #fff;" id="dispFfId">123456789</p>
+                    </div>
+                </div>
+                <button class="btn-copy" onclick="copyFfId()">
+                    <i class="fa-regular fa-copy"></i> نسخ الـ ID
+                </button>
+            </div>
+
+            <!-- WhatsApp Card -->
+            <a href="#" target="_blank" id="waLink" class="social-card">
+                <div class="card-left">
+                    <div class="icon-box wa-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>WhatsApp</h3>
+                        <p>تواصل معي مباشرة</p>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <i class="fa-solid fa-chevron-left" style="color: var(--text-muted);"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer Lock Trigger -->
+        <div class="footer-lock">
+            <button class="lock-btn" onclick="openAuthModal()" title="لوحة التحكم">
+                <i class="fa-solid fa-lock"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-card" style="max-width: 360px;">
+            <div class="modal-header">
+                <h3>دخول المشرف</h3>
+                <button class="close-btn" onclick="closeModal('authModal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label>أدخل كلمة المرور:</label>
+                <input type="password" id="adminPassInput" class="form-control" placeholder="••••••••">
+            </div>
+            <button class="btn-submit" onclick="verifyAdmin()">دخول</button>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>لوحة تحكم الموقع</h3>
+                <button class="close-btn" onclick="closeModal('adminModal')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label>اسم القناة:</label>
+                <input type="text" id="inpChannelName" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>الوصف:</label>
+                <input type="text" id="inpBio" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>صورة اللوجو (رفع صورة أو رابط):</label>
+                <input type="file" id="inpLogoFile" accept="image/*" class="form-control" style="margin-bottom: 6px;">
+                <input type="text" id="inpLogoUrl" class="form-control" placeholder="أو ضع رابط الصورة هنا">
+            </div>
+
+            <div class="form-group">
+                <label>صورة البانر (رفع صورة أو رابط):</label>
+                <input type="file" id="inpBannerFile" accept="image/*" class="form-control" style="margin-bottom: 6px;">
+                <input type="text" id="inpBannerUrl" class="form-control" placeholder="أو ضع رابط البانر هنا">
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+
+            <div class="form-group">
+                <label>متابعين يوتيوب:</label>
+                <input type="number" id="inpYtCount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>رابط قناة يوتيوب:</label>
+                <input type="text" id="inpYtUrl" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>متابعين تيك توك:</label>
+                <input type="number" id="inpTtCount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>رابط حساب تيك توك:</label>
+                <input type="text" id="inpTtUrl" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>متابعين إنستغرام:</label>
+                <input type="number" id="inpIgCount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>رابط حساب إنستغرام:</label>
+                <input type="text" id="inpIgUrl" class="form-control">
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+
+            <div class="form-group">
+                <label>Free Fire ID:</label>
+                <input type="text" id="inpFfId" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>رقم الواتساب (مع الرمز الدولي مثل 213xxxxxxxxx):</label>
+                <input type="text" id="inpWaNum" class="form-control">
+            </div>
+
+            <button class="btn-submit" onclick="saveData()">حفظ التغيرات</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">تم النسخ بنجاح!</div>
+
+    <script>
+        // Secret PIN for admin access (default: admin123)
+        const ADMIN_PIN = "admin2008";
+
+        // Default Data State
+        let siteData = {
+            channelName: "Kalikos_Tv",
+            bio: "مرحباً بكم في القناة الرسمية | صانع محتوى Free Fire",
+            logoUrl: "https://via.placeholder.com/150/ff6b00/ffffff?text=Kalikos",
+            bannerUrl: "",
+            ytCount: 1000,
+            ytUrl: "https://youtube.com",
+            ytHandle: "@Kalikos_Tv",
+            ttCount: 1000,
+            ttUrl: "https://tiktok.com",
+            ttHandle: "@kalikos_tv",
+            igCount: 500,
+            igUrl: "https://instagram.com",
+            igHandle: "@kalikos_tv",
+            ffId: "284930184",
+            waNum: "213000000000"
+        };
+
+        // Load Saved Data
+        function loadData() {
+            const saved = localStorage.getItem('kalikos_site_data');
+            if (saved) {
+                try {
+                    siteData = { ...siteData, ...JSON.parse(saved) };
+                } catch(e) {}
+            }
+            renderUI();
+        }
+
+        // Render UI Elements
+        function renderUI() {
+            document.getElementById('dispChannelName').innerText = siteData.channelName;
+            document.getElementById('dispBio').innerText = siteData.bio;
+            document.getElementById('avatarImg').src = siteData.logoUrl || "https://via.placeholder.com/150/ff6b00/ffffff?text=Kalikos";
+
+            const bannerBg = document.getElementById('bannerBg');
+            if (siteData.bannerUrl) {
+                bannerBg.style.backgroundImage = `url('${siteData.bannerUrl}')`;
+            } else {
+                bannerBg.style.backgroundImage = "linear-gradient(135deg, #1f1209 0%, #3a1c06 50%, #120a03 100%)";
+            }
+
+            // Numeric Values
+            document.getElementById('ytCount').innerText = Number(siteData.ytCount).toLocaleString('en-US');
+            document.getElementById('ttCount').innerText = Number(siteData.ttCount).toLocaleString('en-US');
+            document.getElementById('igCount').innerText = Number(siteData.igCount).toLocaleString('en-US');
+            
+            const total = Number(siteData.ytCount) + Number(siteData.ttCount) + Number(siteData.igCount);
+            document.getElementById('totalFollowers').innerText = total.toLocaleString('en-US');
+
+            // Links & IDs
+            document.getElementById('ytLink').href = siteData.ytUrl;
+            document.getElementById('dispYtHandle').innerText = siteData.ytHandle || "@Kalikos_Tv";
+
+            document.getElementById('ttLink').href = siteData.ttUrl;
+            document.getElementById('dispTtHandle').innerText = siteData.ttHandle || "@kalikos_tv";
+
+            document.getElementById('igLink').href = siteData.igUrl;
+            document.getElementById('dispIgHandle').innerText = siteData.igHandle || "@kalikos_tv";
+
+            document.getElementById('dispFfId').innerText = siteData.ffId;
+            document.getElementById('waLink').href = `https://wa.me/${siteData.waNum}`;
+        }
+
+        // Modal Controls
+        function openAuthModal() {
+            document.getElementById('authModal').style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function verifyAdmin() {
+            const pass = document.getElementById('adminPassInput').value;
+            if (pass === ADMIN_PIN) {
+                closeModal('authModal');
+                document.getElementById('adminPassInput').value = '';
+                populateAdminInputs();
+                document.getElementById('adminModal').style.display = 'flex';
+            } else {
+                alert('كلمة المرور غير صحيحة!');
+            }
+        }
+
+        function populateAdminInputs() {
+            document.getElementById('inpChannelName').value = siteData.channelName;
+            document.getElementById('inpBio').value = siteData.bio;
+            document.getElementById('inpLogoUrl').value = siteData.logoUrl;
+            document.getElementById('inpBannerUrl').value = siteData.bannerUrl;
+
+            document.getElementById('inpYtCount').value = siteData.ytCount;
+            document.getElementById('inpYtUrl').value = siteData.ytUrl;
+
+            document.getElementById('inpTtCount').value = siteData.ttCount;
+            document.getElementById('inpTtUrl').value = siteData.ttUrl;
+
+            document.getElementById('inpIgCount').value = siteData.igCount;
+            document.getElementById('inpIgUrl').value = siteData.igUrl;
+
+            document.getElementById('inpFfId').value = siteData.ffId;
+            document.getElementById('inpWaNum').value = siteData.waNum;
+        }
+
+        // Handle Image File Uploads
+        function handleFileUpload(fileInput, callback) {
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    callback(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                callback(null);
+            }
+        }
+
+        function saveData() {
+            siteData.channelName = document.getElementById('inpChannelName').value;
+            siteData.bio = document.getElementById('inpBio').value;
+
+            const logoUrlInput = document.getElementById('inpLogoUrl').value;
+            const bannerUrlInput = document.getElementById('inpBannerUrl').value;
+
+            if (logoUrlInput) siteData.logoUrl = logoUrlInput;
+            if (bannerUrlInput) siteData.bannerUrl = bannerUrlInput;
+
+            siteData.ytCount = parseInt(document.getElementById('inpYtCount').value) || 0;
+            siteData.ytUrl = document.getElementById('inpYtUrl').value;
+
+            siteData.ttCount = parseInt(document.getElementById('inpTtCount').value) || 0;
+            siteData.ttUrl = document.getElementById('inpTtUrl').value;
+
+            siteData.igCount = parseInt(document.getElementById('inpIgCount').value) || 0;
+            siteData.igUrl = document.getElementById('inpIgUrl').value;
+
+            siteData.ffId = document.getElementById('inpFfId').value;
+            siteData.waNum = document.getElementById('inpWaNum').value;
+
+            // Check file inputs
+            const logoFile = document.getElementById('inpLogoFile');
+            const bannerFile = document.getElementById('inpBannerFile');
+
+            handleFileUpload(logoFile, (logoBase64) => {
+                if (logoBase64) siteData.logoUrl = logoBase64;
+                
+                handleFileUpload(bannerFile, (bannerBase64) => {
+                    if (bannerBase64) siteData.bannerUrl = bannerBase64;
+
+                    // Save and Close
+                    localStorage.setItem('kalikos_site_data', JSON.stringify(siteData));
+                    renderUI();
+                    closeModal('adminModal');
+                    showToast('تم حفظ التغييرات بنجاح!');
+                });
+            });
+        }
+
+        // Copy Free Fire ID
+        function copyFfId() {
+            const idText = siteData.ffId;
+            navigator.clipboard.writeText(idText).then(() => {
+                showToast('تم نسخ الـ ID بنجاح!');
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
